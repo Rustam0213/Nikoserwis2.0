@@ -1,0 +1,110 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Admin') }}{% endblock %}
+
+{% block extrastyle %}
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Teachers:ital,wght@0,400..800;1,400..800&display=swap');
+
+
+body {
+  font-family: Source Code Pro, sans-serif;
+  background: #eee;
+}
+
+#branding {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#user-tools, #logout-form button {
+  padding: 0;
+  font-weight: 300;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+#branding h1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+#header {
+  background: #2049A0;
+}
+
+.module caption {
+  background: #2049A0;
+}
+
+#content-related .module h2 {
+  background: #F4DF4A;
+  border-radius: 8px;
+}
+
+#content-related .module {
+  border: 3px solid #F4DF4A;
+  border-radius: 10px;
+}
+
+#content-related .actionlist li {
+  line-height: 1.2;
+  margin-bottom: 10px;
+  padding-left: 18px;
+  border: 3px solid #2049A0;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+@media (max-width: 1024px) {
+  #branding h1 {
+    margin: 0 0 8px;
+    line-height: 1.2;
+  }
+}
+
+#branding h1 a:link,
+#branding h1 a:visited {
+  color: var(--accent);
+  margin-left: 15px;
+}
+
+div.breadcrumbs {
+  background: #2049a0c7;
+}
+
+table{
+  border-radius: 10px;
+}
+
+</style>
+<link rel="shortcut icon" href="{%static 'Ni.png'%}" type="image/x-icon">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.css">
+{% endblock %}
+
+{% block branding %}
+<img src="{% static 'zyro-image1.png' %}" alt="logo" class="logo1" width="60px">
+<h1 class="site-name" id="site-name">
+  <a href="{% url 'admin:index' %}">{{ site_header|default:_('Administrasja Nikoserwis') }}</a>
+</h1>
+
+<div id="calendar"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.min.js" defer></script>
+
+
+{% if user.is_anonymous %}
+  {% include "admin/color_theme_toggle.html" %}
+{% endif %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

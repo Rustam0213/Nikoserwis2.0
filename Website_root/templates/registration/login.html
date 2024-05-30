@@ -1,0 +1,45 @@
+{%extends 'base_register.html'%}
+{%load static%}
+
+{%block title%}Zaloguj się{%endblock%}
+{%block header%}Zaloguj się{%endblock%}
+
+{%block content%}
+
+    <div class="row text-center">
+        <h1>Zaloguj się</h1>
+    </div>
+
+  <div class="row">
+      <div class="col-sm-2 col-md-6 col-lg-4 mb-4">
+        <div class="container">
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="email">Email</label>
+                {{ form.username }}
+            </div>
+            <div class="input-group">
+                <label for="password">Hasło</label>
+                {{ form.password }}
+            </div>
+            {% if form.non_field_errors %}
+                <div class="error">{{ form.non_field_errors.0 }}</div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-6 d-flex justify-content-center align-items-center mb-2">
+                    <button type="submit">Zalogować się</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 d-flex justify-content-center align-items-center mb-2">
+                    <h6><a href="{%url 'password_reset'%}" class="">Nie pamiętam hasła</a></h6>
+                </div>
+            </div>
+        </form>
+        
+        </div>
+      </div>
+  </div>
+
+{%endblock%}

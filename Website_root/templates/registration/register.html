@@ -1,0 +1,101 @@
+{%extends 'base_register.html'%}
+{%load static%}
+
+{%block title%}Zarejestruj się{%endblock%}
+{%block header%}Zarejestruj się{%endblock%}
+
+{%block content%}
+
+  <div class="row text-center">
+    <h1>Zarejestruj się</h1>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-2 col-md-6 col-lg-4 mb-4">
+        <div class="container">
+          <form action="{%url 'register'%}" method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="firstName">Imię</label>
+                {{ form.first_name }}
+                {% if form.first_name.errors %}
+                    <div class="error-message">{{ form.first_name.errors.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group double">
+                <label for="lastName">Nazwisko</label>
+                {{ form.last_name }}
+                {% if form.last_name.errors %}
+                    <div class="error-message">{{ form.last_name.errors.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="error-message">{{ form.email.errors.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="phone">Numer kontaktowy</label>
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <div class="error-message">{{ form.phone.errors.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="password">Hasło</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="error-message">{{ form.password1.errors.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="password">Powtórz hasło</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="error-message">{{ form.password2.errors.0 }}</div>
+                {% endif %}
+            </div>
+            {% if form.non_field_errors %}
+                <div class="error-message">{{ form.non_field_errors.0 }}</div>
+            {% endif %}
+            <ul class="messages">
+              {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+            </ul>
+            <div class="row">
+              <div class="col-md-1">
+                <input class="" type="checkbox" name="checkbox" required>
+              </div>
+              <div class="col mt-2">
+                <p>Akceptuję <a href="{%url 'polityka'%}">regulamin</a> tej strony internetowej</p>
+              </div>
+            </div>
+            
+            
+            <div class="row">
+              <div class="col-lg-6 d-flex justify-content-center align-items-center mb-2">
+                <button type="submit">Zarejestrować się</button>
+              </div>
+              <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                <div class="captcha"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <h5 class="h5-form">Masz konto?</h5>
+              </div>
+              <div class="col-12">
+                <div class="btn btn-log">
+                  <h7><a class="a-form" href="{%url 'login'%}">Zaloguj się</a></h7>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+
+{%endblock%}

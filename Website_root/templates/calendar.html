@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title>Kalendarz</title>
+    <meta charset='utf-8' />
+    <style>
+        /* Стили для уменьшенного календаря */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #calendar {
+            max-width: 1000px; /* Максимальная ширина календаря */
+            margin: 20px auto; /* Центрирование календаря */
+        }
+
+        /* Медиа-запрос для мобильных устройств */
+        @media (max-width: 600px) {
+            #calendar {
+                max-width: 90%; /* Ширина календаря занимает 90% ширины экрана */
+            }
+        }
+
+        /* Стили для кнопок */
+        .event-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core/locales/pl.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'pl', // Установка польской локали
+                initialView: 'dayGridMonth',
+                events: {{ events|safe }},
+                eventClick: function(info) {
+                    if (info.event.extendedProps.admin_url) {
+                        window.location = info.event.extendedProps.admin_url;
+                        return false;
+                    }
+                }
+            });
+            calendar.render();
+        });
+
+    </script>
+</head>
+<body>
+    <div id='calendar'></div>
+</body>
+</html>

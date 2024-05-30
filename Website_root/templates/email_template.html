@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nowy wniosek</title>
+</head>
+<body>
+    <div class="header">
+        <h2>Nowy wniosek od {{ user.first_name }} {{ user.last_name }}</h2>
+    </div>
+    <div class="content" >
+        <p><strong>Na kiedy:</strong> {{application.desired_appointment_date}} </p>
+        <p><strong>Użytkownik:</strong> {{ user }}</p>
+        <p><strong>Reg Num:</strong> {{ application.reg_num }}</p>
+        <p><strong>Marka</strong> {{ application.mark }}</p>
+        <p><strong>Model:</strong> {{ application.model }}</p>
+        <p><strong>Problem:</strong> {{application.details}} </p>
+        <p><a href="{{ admin_url }}" class="button">Przejdź do panelu administracyjnego</a></p>
+    </div>
+</body>
+</html>

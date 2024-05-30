@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'Ni.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontello.css' %}">
+    <title>Nikoserwis</title>
+</head>
+<body>
+
+  <header>                
+    {% if user.is_staff %}
+      <a href="{% url 'calendar' %}" class="btn btn-lg btn-success">Kalendarz</a>
+      <a href="/nikoserwisadmin" class="btn btn-lg btn-success">Administracja</a>
+    {% endif %}
+    <div class="header-content">
+      <div class="row">
+        <div class="col-sm-12 col-lg-4 some">
+          <img src="{% static 'zyro-image.png' %}" alt="logo" class="logo" draggable="false">
+        </div>
+        <div class="col-sm-12 col-lg-4 t1 text-center text-white mb-4">
+          <h1 class="krzywy-tekst">{% block header %}{% endblock %}</h1>
+        </div>
+
+        <div class="col-sm-12 col-lg-4">
+          <div class="row">
+            <div class="col-sm-12 col-lg-6">
+              <div class="btn-group-vertical b-btns d-flex justify-content-end text-center">
+                <a href="{% url 'main_page' %}" class="btn btn-lg mb-2 text-white btn-itd">O nas</a>
+                <a href="{% url 'nowosci' %}" class="btn btn-lg mb-2 text-white btn-itd">Nowości</a>
+                <a href="{% url 'promocje' %}" class="btn btn-lg mb-2 text-white btn-itd">Promocje</a>
+                <a href="{% url 'humor' %}" class="btn btn-lg mb-2 text-white btn-itd">Humor</a>
+                <a href="#footer" class="btn btn-lg mb-2 text-white btn-itd">Kontakt</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+
+  <footer class="bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="contact-info">
+            <div class="bgc">
+              <div class="btn btn-lg btn-rst">
+                <a href="tel:+48691407374"><i class="number icon-phone m-2"></i></a>
+                <a href="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRwPxNvZdBDCTKWgLVbWrrDCrclBGCmgszNqhXqKslKQrWpqtLqfMLLVxpVTTLNLFjTrbGCM"><i class="number icon-mail m-2"></i></a>
+                <a href="https://www.facebook.com/NikoSerwis23/"><i class="number icon-facebook m-2"></i></a>
+                <a href="https://instagram.com/nikoserwis?igshid=MzRlODBiNWFlZA=="><i class="number icon-instagram m-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="footer" class="col-md-6" style="margin-bottom: 20px; margin-top: 20px;">
+          <div class="map-div d-flex justify-content-center">
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2561.915607429088!2d18.594059699999995!3d50.0504122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47114dcf5939cbc3%3A0x61a32faf3cd289e0!2sNikoserwis!5e0!3m2!1suk!2spl!4v1691093140425!5m2!1suk!2spl&" width="800px" height="320px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="bgc d-flex justify-content-center">
+            <div class="m-2">
+              <h3 class="text-center">Umów wizytę
+                {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}">tutaj</a>
+                {% else %}
+                <a href="{% url 'register' %}">tutaj</a>
+                {% endif %}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+  <div class="modal fade" id="cookieModal" tabindex="-1" aria-labelledby="cookieModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cookieModalLabel">Używanie plików cookie</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Nasza strona internetowa korzysta z plików cookie, aby zapewnić najlepsze wrażenia użytkownika. Kontynuując korzystanie z naszej strony, zgadzasz się na używanie plików cookie zgodnie z naszą <a href="{% url 'polityka' %}">polityką prywatności</a>.</p>
+        </div>
+        <div class="modal-footer">
+          <img class="icon" src="{%static 'cookie.png'%}" width="40px" draggable="false">
+          <button type="button" class="btn btn-primary" id="acceptCookies">Akceptuj</button>
+          <button type="button" class="btn btn-secondary" id="rejectCookies">Odrzuć</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+      $(document).ready(function() {
+        if (!getCookie('cookie_consent') && !getCookie('cookie_reject')) {
+          $('#cookieModal').modal('show');
+        }
+
+        $('#acceptCookies').click(function() {
+          setCookie('cookie_consent', '1', 365);
+          $('#cookieModal').modal('hide');
+        });
+
+        $('#rejectCookies').click(function() {
+          setCookie('cookie_reject', '1', 365);
+          $('#cookieModal').modal('hide');
+        });
+
+        function setCookie(name, value, days) {
+          const d = new Date();
+          d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+          const expires = "expires=" + d.toUTCString();
+          document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+      });
+    </script>
+
+
+</body>
+</html>

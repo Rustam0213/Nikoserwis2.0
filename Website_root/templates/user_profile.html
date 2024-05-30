@@ -1,0 +1,49 @@
+{% extends 'base_register.html' %}
+{%load static%}
+
+{% block title %}Moje dane{% endblock %}
+
+{% block content %}
+
+<div class="row">
+      <div class="col-sm-2 col-md-6 col-lg-4 mb-4">
+        <div class="container">
+          <form action="{%url 'user_profile'%}" method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="firstName">Imię</label>
+                {{ profile_form.first_name }}
+                {% if profile_form.first_name.errors %}
+                    <div class="error-message">{{ profile_form.first_name.errors.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group double">
+                <label for="lastName">Nazwisko</label>
+                {{ profile_form.last_name }}
+                {% if profile_form.last_name.errors %}
+                    <div class="error-message">{{ profile_form.last_name.errors.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                {{ profile_form.email }}
+                {% if profile_form.email.errors %}
+                    <div class="error-message">{{ profile_form.email.errors.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="input-group">
+                <label for="phone">Numer kontaktowy</label>
+                {{ profile_form.phone }}
+                {% if profile_form.phone.errors %}
+                    <div class="error-message">{{ profile_form.phone.errors.0 }}</div>
+                {% endif %}
+            </div>
+            {% if profile_form.non_field_errors %}
+                <div class="error-message">{{ profile_form.non_field_errors.0 }}</div>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+          </form>
+        </div>
+      </div>
+  </div>
+{%endblock%}

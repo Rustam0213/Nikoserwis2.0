@@ -1,0 +1,81 @@
+  <!--
+  <script>
+    $(document).ready(function() {
+      var cookieAccepted = localStorage.getItem("cookieAccepted");
+  
+      if (!cookieAccepted) {
+        $("#cookieAcceptModal").modal("show");
+      }
+  
+      $("#acceptCookieBtn").click(function() {
+        localStorage.setItem("cookieAccepted", "true");
+        $("#cookieAcceptModal").modal("hide");
+      });
+  
+      $("#rejectCookieBtn").click(function() {
+        $("#cookieAcceptModal").modal("hide");
+      });
+    });
+  </script>
+  
+  <style>
+    #cookieAcceptModal .modal-header .close {
+      display: none;
+    }
+  </style>
+
+  <div class="modal fade" id="cookieAcceptModal" tabindex="-1" role="dialog" aria-labelledby="cookieAcceptModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cookieAcceptModalLabel">Pliki cookie</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Zamknij">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Ta strona wykorzystuje pliki cookie w celu poprawy jakości usług. Korzystając z niej, akceptujesz naszą 
+            <a href="{%url 'polityka'%}">Politykę Prywatności</a>.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="rejectCookieBtn">Odrzuć</button>
+          <button type="button" class="btn btn-primary" id="acceptCookieBtn">Akceptuj</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $(".news-image").click(function () {
+        // Retrieve additional photos from the database (you'll need server-side code for this).
+        // For this example, we'll assume you have an array of image URLs.
+        var additionalPhotos = [
+          "image1.jpg",
+          "image2.jpg",
+          "image3.jpg",
+        ];
+  
+        // Populate the modal with the additional photos.
+        var $albumPhotos = $(".album-photos");
+        $albumPhotos.empty();
+        $.each(additionalPhotos, function (index, imgUrl) {
+          $albumPhotos.append('<img src="' + imgUrl + '">');
+        });
+  
+        // Show the modal
+        $("#photoAlbum").modal("show");
+      });
+  
+      // Handle navigation within the photo album
+      $("#nextPhoto").click(function () {
+        // Implement logic to show the next photo
+      });
+  
+      $("#prevPhoto").click(function () {
+        // Implement logic to show the previous photo
+      });
+    });
+  </script>    
+  -->

@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%load static%}
+
+
+{%block header%}Nasze nowości{%endblock%}
+
+{%block content%}
+  <section class="news">
+    <div class="container">
+      <div class="row">
+        {%for inf in news%}
+        <div class="col-md-6">
+          <div class="news-item">
+            {%if inf.img%}
+            <img src="{{inf.img.url}}" alt="News Image" class="news-image">
+            {%endif%}
+            {%if inf.header%}
+            <h3 class="news-title">{{inf.header}}</h3>
+            {%endif%}
+            <p class="news-date">{{inf.date}}</p>
+            {%if inf.desc%}
+            <p class="news-description">{{inf.desc}}</p>
+            {%endif%}
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </section> 
+
+  <style>
+    .news-item{
+      border: 2px solid rgb(255, 255, 135);
+    }
+    .news-image{
+      border: 2px;
+    }
+  </style>
+
+{%endblock%}

@@ -1,0 +1,51 @@
+{% extends 'base_register.html' %}
+
+{%block title%}Twój wniosek{%endblock%}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Informacje o zleceniu</h2>
+    <hr>
+    <dl class="row">
+
+      <dt class="col-sm-3">Przyjęte:</dt>
+      {%if application.completed%}
+      <dd class="col-sm-9 green">Tak</dd>
+      {%else%}
+      <dd class="col-sm-9 red">Nie</dd>
+      {%endif%}
+
+      <style>
+        .red{
+          color: tomato;
+        }
+        .green{
+          color: green;
+        }
+      </style>
+
+      <dt class="col-sm-3">Data utworzenia:</dt>
+      <dd class="col-sm-9">{{ application.date_created }}</dd>
+
+      <dt class="col-sm-3">Data spotkania:</dt>
+      <dd class="col-sm-9">{{ application.desired_appointment_date }}</dd>
+
+      <dt class="col-sm-3">VIN:</dt>
+      <dd class="col-sm-9">{{ application.vin_code }}</dd>
+
+      <dt class="col-sm-3">Numer rejestracyjny:</dt>
+      <dd class="col-sm-9">{{ application.reg_num }}</dd>
+
+      <dt class="col-sm-3">Marka:</dt>
+      <dd class="col-sm-9">{{ application.mark }}</dd>
+
+      <dt class="col-sm-3">Model:</dt>
+      <dd class="col-sm-9">{{ application.model }}</dd>
+
+      <!-- Добавьте остальные поля по вашему усмотрению -->
+
+      <dt class="col-sm-3">Szczegóły problemu:</dt>
+      <dd class="col-sm-9">{{ application.details }}</dd>
+    </dl>
+  </div>
+{% endblock %}

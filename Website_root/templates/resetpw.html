@@ -1,0 +1,79 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="{%static 'N.png'%}" type="image/x-icon">
+      <link rel="stylesheet" href="{%static 'css/style.css'%}">
+      <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+      <link rel="stylesheet" href="{%static 'css/fontello.css'%}">
+      <title>Wpisz kod</title>
+</head>
+<body>
+
+      <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 card d-flex justify-content-center mt-4">
+                        <h1 class="m-4 text-center">Wpisz kod który wysłaliśmy ci na Email</h1>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 col-sm-3 mx-auto">
+                                <form action="{%url 'newpw'%}" class="text-center">
+                                    <div class="mb-5">
+                                        <input class="form-control text-center input-line" type="number" name="numbers" maxlength="4" required>
+                                    </div>
+                                    <div class="mb-5">
+                                        <button type="submit" class="btn btn-primary">Zaakceptuj</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </section>
+        
+<style>
+body{
+      background: rgb(25, 70, 162);
+      background: -moz-linear-gradient(90deg, rgba(25, 70, 162, 1) 43%, rgba(237, 206, 38, 1) 83%);
+      background: -webkit-linear-gradient(90deg, rgba(25, 70, 162, 1) 43%, rgba(237, 206, 38, 1) 83%);
+      background: linear-gradient(90deg, rgba(25, 70, 162, 1) 43%, rgba(237, 206, 38, 1) 83%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1946a2", endColorstr="#edce26", GradientType=1);
+}
+
+.card{
+      background-color: #f0f0f0;
+      border: 3px solid black
+}
+
+.input-line{
+      border: 3px solid black;
+      display: block;
+      justify-content: center;
+      font-size: 40px;
+      padding: 20px;
+}
+
+.btn{
+      padding:10px;
+      border:2px solid black;
+      margin-bottom: 10px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Удаление стрелок в Firefox */
+}
+
+</style>
+
+</body>
+
+</html>

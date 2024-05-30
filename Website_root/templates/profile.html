@@ -1,0 +1,107 @@
+{% extends 'base_register.html' %}
+
+{% block title %}Panel użytkownika{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5 profile-block">
+  <div class="row">
+    <div class="col">
+      <h2>Witaj, {{ user.first_name }}!</h2>
+    </div>
+      
+    <div class="col">
+      <a href="{% url 'main_page' %}" class="btn btn-success">Strona główna</a>
+      <a href="{% url 'user_profile' %}" class="btn btn-primary m-2 col">Moje dane</a>
+      <button type="button" class="btn btn-danger m-2 col" data-bs-toggle="modal" data-bs-target="#logoutModal">Wyloguj</button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-md-6">
+      {% if not has_uncompleted_applications %}
+        <a class="btn btn-lg btn-primary" href="{% url 'wiadomosc' %}">Umów nową wizytę</a>
+      {% else %}
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center align-items-center m-2">
+            <h4>Poczekaj aż twój wniosek zostanie przyjęty</h4>
+          </div>
+        </div>
+      {% endif %}
+      <p class="mt-3">Skontaktujemy się z tobą jak najszybciej</p>
+    </div>
+
+    <div class="big-box col-md-6">
+      <h3>Ostatnie wnioski</h3>
+      <hr>
+      <div class="border-box">
+        <ul>
+          {% for application in user_applications %}
+            <li>
+              <a href="{% url 'application_details' application.id %}">
+                {{ application.date_created }}
+              </a>
+            </li>
+            <hr>
+          {% endfor %}
+        </ul>
+        <hr>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.big-box {
+  border: 1px solid rgb(67, 67, 67);
+  border-radius: 5px;
+}
+
+.border-box {
+  height: 200px;
+  overflow-y: auto;
+}
+
+/* Стилизация полосы прокрутки */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Стилизация бегунка (ползунка) полосы прокрутки */
+::-webkit-scrollbar-thumb {
+  background-color: #a58c00;
+  border-radius: 10px;
+}
+
+/* Стилизация фона полосы прокрутки */
+::-webkit-scrollbar-track {
+  background-color: #ffdd00;
+  border-radius: 10px;
+}
+
+a {
+  font-size: 20px;
+}
+</style>
+
+<div class="modal fade" id="logoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Czy na pewno chcesz się wylogować?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger mb-2">Tak</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

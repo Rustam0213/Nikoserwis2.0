@@ -1,0 +1,91 @@
+{% extends "base_register.html" %}
+{% load static %}
+
+{% block title %}Umówienie wizyty{% endblock %}
+
+{% block content %}
+<header>
+  <div class="row"></div>
+  <div class="header-content">
+    <div class="row">
+      <div class="col-lg-12 d-flex justify-content-center text-white"></div>
+    </div>
+  </div>
+</header>
+<div class="row">
+  <div class="col-sm-2 col-md-6 col-lg-4 mb-4">
+    <div class="container">
+      {% if not has_uncompleted_applications %}
+      <form action="{% url 'wiadomosc' %}" method="POST">
+        {% csrf_token %}
+        
+        <div class="input-group">
+          <label for="vinCode">VIN-kod auta</label>
+          {{ form.vin_code }}
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <label for="regNumber">Rejestracyjny numer auta</label>
+            {{ form.reg_num }}
+          </div>
+          <div class="col-md-6">
+            <label for="carMake">Marka</label>
+            {{ form.mark }}
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <label for="carModel">Model</label>
+            {{ form.model }}
+          </div>
+          <div class="col-md-6">
+            <label for="carYear">Rok</label>
+            {{ form.year }}
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <label for="engineVolume">Pojemność silnika w cm³</label>
+            {{ form.displacement }}
+          </div>
+          <div class="col-md-6">
+            <label for="enginePower">KM</label>
+            {{ form.hp }}
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12 text-input">
+            <label for="message">Szczegóły problemu</label>
+            {{ form.details }}
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6">
+            <label for="desired_date">Na kiedy chcesz się umówić</label>
+            {{ form.desired_appointment_date }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center align-items-center m-2">
+            <button type="submit">Umów</button>
+          </div>
+        </div>
+        
+        {% else %}
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center align-items-center m-2">
+            <h4>Poczekaj, aż twój wniosek zostanie przyjęty</h4>
+          </div>
+        </div>
+        {% endif %}
+        
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

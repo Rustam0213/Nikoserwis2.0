@@ -18,6 +18,7 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ()}),
         ('Informacja osobista', {'fields': ('first_name', 'last_name', 'email', 'phone')}),
         ('Czas korzystania', {'fields': ('last_login', 'date_joined')}),
+        ('Uprawnienia i grupy', {'fields': ('is_active', 'is_staff', 'is_superuser', "groups")}),
     )
 
 class ApplicationsAdmin(admin.ModelAdmin):

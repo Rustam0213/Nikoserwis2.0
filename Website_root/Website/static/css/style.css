@@ -12,11 +12,16 @@ header, footer{
   background: -webkit-linear-gradient(90deg, rgba(25, 70, 162, 1) 43%, rgba(237, 206, 38, 1) 83%);
   background: linear-gradient(90deg, rgba(25, 70, 162, 1) 43%, rgba(237, 206, 38, 1) 83%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1946a2", endColorstr="#edce26", GradientType=1);
+  
 }
 
+footer{
+  box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.5);
+}
 
 /* Стили для header */
 header {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
   padding: 10px;
 }
 
@@ -49,10 +54,11 @@ header {
   background-color: var(--color1);
   border: 1px solid #4f4f4f;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .b-btns a:hover {
+  transform: translateY(-2px);
   background-color: #607ebf;
 }
 
@@ -69,7 +75,7 @@ header {
   display: block;
   border: 3px solid var(--color2);
   border-radius: 50%;
-  transition: background-color 0.3s ease, transform 0.5s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .number:hover {

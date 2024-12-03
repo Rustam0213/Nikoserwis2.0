@@ -7,6 +7,7 @@
 <section class="news">
   <div class="container">
     <div class="row">
+      {%if promotion%}
       {%for inf in promotion%}
       <div class="col-md-6">
         <div class="news-item">
@@ -23,6 +24,9 @@
         </div>
       </div>
       {%endfor%}
+      {%else%}
+      <h1 class="text-center m-5">Na razie ten rozdział jest pusty, zajmiemy się nim w najbliższy czas</h1>
+      {%endif%}
     </div>
   </div>
 </section> 

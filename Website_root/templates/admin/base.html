@@ -48,10 +48,6 @@
                     <a style="margin-top: 20px; background-color: #004186; padding: 10px; border-radius: 10px;" href="{{ site_url }}">{% translate 'View site' %}</a>
                 {% endif %}
 
-                {% if user.has_usable_password %}
-                <a style="margin-top: 20px; background-color: #004186; padding: 10px; border-radius: 10px;" href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a>
-                {% endif %}
-
                 <form  id="logout-form" method="post" action="{% url 'admin:logout' %}">
                     {% csrf_token %}
                     <button style="margin-top: 20px; background-color: tomato; padding: 10px; border-radius: 10px;" type="submit">{% translate 'Log out' %}</button>
@@ -99,7 +95,6 @@
             {% block object-tools %}{% endblock %}
             {{ content }}
           {% endblock %}
-          {% block sidebar %}{% endblock %}
           <br class="clear">
         </div>
         <!-- END Content -->

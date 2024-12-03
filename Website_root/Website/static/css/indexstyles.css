@@ -1,0 +1,24 @@
+.box {
+      background-color: #ebff92;
+      border-radius: 10px;
+      border: 1px solid #b4b4b4;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+    
+
+.box-content{
+      padding: 10px;
+}
+
+.line{
+      margin-bottom: 30px;
+}
+
+.small{
+      font-size: 25px;
+}

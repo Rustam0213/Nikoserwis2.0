@@ -2,6 +2,8 @@ import random
 import smtplib
 from email.mime.text import MIMEText
 
+from axes.decorators import axes_dispatch
+from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -109,14 +111,19 @@ class Register(View):
                 request.session['first_name'] = form.cleaned_data['first_name']
                 request.session['last_name'] = form.cleaned_data['last_name']
                 request.session['phone'] = form.cleaned_data['phone']
-                send_mail(
-                    'Twój kod werifikacyjny',
-                    str(rand),
+
+                html_content = render_to_string('kod_email.html', {"rand": rand})
+                text_content = strip_tags(html_content)
+
+                email_message = EmailMessage(
+                    "Twój kod weryfikacyjny",
+                    html_content,
                     'nikoserwisbot@gmail.com',
                     [email],
-                    fail_silently=False,
                 )
-                
+                email_message.content_subtype = "html"  # Устанавливаем тип контента как HTML
+                email_message.send()
+
                 cache.set(email + '_last_sent_time', timezone.now(), 120)  # 120 секунд = 2 минуты
 
                 return redirect('kod')
@@ -125,6 +132,7 @@ class Register(View):
 
         context = {'form': form}
         return render(request, self.template_name, context)
+
 
 def kod(request):
     if request.method == 'POST':
@@ -148,12 +156,10 @@ def kod(request):
                     phone=phone
                 )
 
-                # Аутентифицируем и логиним пользователя
                 user = authenticate(request, username=email, password=password)
                 if user is not None:
                     login(request, user)
 
-                    # Очищаем данные из сессии
                     del request.session['verification_code']
                     del request.session['email']
                     del request.session['password']
@@ -176,6 +182,10 @@ def kod(request):
 
 class CustomLoginView(View):
     template_name = 'registration/login.html'
+
+    @axes_dispatch
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
     def get(self, request):
         context = {'form': AuthenticationForm()}

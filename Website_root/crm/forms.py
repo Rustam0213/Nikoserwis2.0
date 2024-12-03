@@ -68,7 +68,7 @@ class UserCreationForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'phone']
+        fields = ['first_name', 'last_name', 'email', 'phone','is_active', 'is_staff', 'is_superuser',"groups"]
 
 day = date.today()
 

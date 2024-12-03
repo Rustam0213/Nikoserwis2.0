@@ -1,12 +1,16 @@
 {%extends 'base.html'%}
 {% load static %}
 
+{%block active_button%}
+{%endblock%}
+
 {%block header%}Humor w serwisie{%endblock%}
 
 {%block content%}
 <section class="news">
   <div class="container">
     <div class="row">
+      {%if humor%}
       {%for inf in humor%}
       <div class="col-md-6">
         <div class="news-item">
@@ -23,6 +27,9 @@
         </div>
       </div>
       {%endfor%}
+      {%else%}
+      <h1 class="text-center m-5">Na razie ten rozdział jest pusty, zajmiemy się nim w najbliższy czas</h1>
+      {%endif%}
     </div>
   </div>
 </section> 
@@ -33,6 +40,9 @@
   }
   .news-image{
     border: 2px solid #b7b7b7;
+  }
+  #btn4{
+    background-color: #607ebf;
   }
 </style>
 

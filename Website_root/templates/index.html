@@ -6,66 +6,86 @@
 {% block content %}
 
 <div class="container">
-    <h1 class="text-center mt-4 mb-5">Nasza oferta</h1>
-    <hr>
+    <h1 class="text-center mt-4 mb-3">Nasza oferta</h1>
+    <hr class="line">
     <div class="row">
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'mechanic.svg' %}" alt="Usługi mechanika" width="64px">
-                <h3 class="mt-4">Usługi mechanika</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'mechanic.svg' %}" alt="Usługi mechanika" width="64px">
+                    <h3 class="mt-4">Usługi mechanika</h3>
+                </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'accumulator.svg' %}" alt="Wymiana akumulatora" width="64px">
-                <h3 class="mt-4">Wymiana akumulatora</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'accumulator.svg' %}" alt="Wymiana akumulatora" width="64px">
+                    <h3 class="mt-4">Wymiana akumulatora</h3>                    
+                </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'engine.svg' %}" alt="Diagnostyka silnika" width="64px">
-                <h3 class="mt-4">Diagnostyka silnika</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'engine.svg' %}" alt="Diagnostyka silnika" width="64px">
+                    <h3 class="mt-4">Diagnostyka silnika</h3>                    
+                </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'brake.png' %}" alt="Wymiana hamulców" width="64px">
-                <h3 class="mt-4">Wymiana hamulców</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'brake.png' %}" alt="Wymiana hamulców" width="64px">
+                    <h3 class="mt-4">Wymiana hamulców</h3>                    
+                </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'transmission.svg' %}" alt="Naprawienie transmicji" width="64px">
-                <h3 class="mt-4">Naprawienie transmicji</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'transmission.svg' %}" alt="Naprawienie transmicji" width="64px">
+                    <h3 class="mt-4">Naprawienie transmicji</h3>                    
+                </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'steering.svg' %}" alt="Naprawienie systemów kierownicy" width="64px">
-                <h3 class="mt-4">Naprawienie systemów kierownicy</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'steering.svg' %}" alt="Naprawienie systemów kierownicy" width="64px">
+                    <h3 class="mt-4 small">Naprawienie systemów kierownicy</h3>                    
+                </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'oil.svg' %}" alt="Wymiana oleju" width="64px">
-                <h3 class="mt-4">Wymiana oleju</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'oil.svg' %}" alt="Wymiana oleju" width="64px">
+                    <h3 class="mt-4">Wymiana oleju</h3>                    
+                </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'air-filter.svg' %}" alt="Wymiana filtrów" width="64px">
-                <h3 class="mt-4">Wymiana filtrów</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'air-filter.svg' %}" alt="Wymiana filtrów" width="64px">
+                    <h3 class="mt-4">Wymiana filtrów</h3>                    
+                </div>
             </div>
         </div>
         <div class="col-md-4 mb-4">
-            <div class="text-center">
-                <img src="{% static 'tire.svg' %}" alt="Wymiana opon" width="64px">
-                <h3 class="mt-4">Wymiana opon</h3>
+            <div class="text-center box">
+                <div class="box-content">
+                    <img src="{% static 'tire.svg' %}" alt="Wymiana opon" width="64px">
+                    <h3 class="mt-4">Wymiana opon</h3>                    
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-{% endblock %}
 <style>
+#btn1{
+  background-color: #607ebf;
+}
 </style>
+{% endblock %}
